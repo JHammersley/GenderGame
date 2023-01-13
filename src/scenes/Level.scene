@@ -1,0 +1,85 @@
+{
+    "id": "01aefa93-6044-4159-8358-7e91310aa05f",
+    "sceneType": "SCENE",
+    "settings": {
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "Level"
+    },
+    "displayList": [
+        {
+            "type": "TilemapLayer",
+            "id": "bd108bd8-1c5e-464c-945f-5d3d4c9eea97",
+            "label": "background_1",
+            "components": [],
+            "tilemapId": "ab4981b8-dd67-438a-986d-5f3449055822",
+            "layerName": "Background",
+            "tilesets": [
+                "Serene_Village_48x48"
+            ]
+        },
+        {
+            "type": "TilemapLayer",
+            "id": "81f58d4f-7f9e-4ad8-8a0a-c8abd4f5dcff",
+            "label": "mainLevel_1",
+            "scope": "CLASS",
+            "components": [],
+            "tilemapId": "c1bc4e7b-e344-4373-bb75-0c0db1ce0bf6",
+            "layerName": "MainLevel",
+            "tilesets": [
+                "Serene_Village_48x48"
+            ]
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "669b964c-d25d-4ec6-9984-9c6345196c5b",
+            "label": "arcadesprite_1",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "jason",
+                "frame": 20
+            },
+            "x": 176,
+            "y": 270,
+            "scaleX": 3,
+            "scaleY": 3,
+            "allowGravity": false,
+            "collideWorldBounds": true,
+            "body.width": 16,
+            "body.height": 16
+        }
+    ],
+    "plainObjects": [
+        {
+            "id": "ab4981b8-dd67-438a-986d-5f3449055822",
+            "type": "Tilemap",
+            "label": "mainmap",
+            "key": "mainmap",
+            "tilesets": [
+                {
+                    "name": "Serene_Village_48x48",
+                    "imageKey": "Village"
+                }
+            ]
+        },
+        {
+            "id": "c1bc4e7b-e344-4373-bb75-0c0db1ce0bf6",
+            "type": "Tilemap",
+            "label": "mainmap_1",
+            "key": "mainmap",
+            "tilesets": [
+                {
+                    "name": "Serene_Village_48x48",
+                    "imageKey": "Village"
+                }
+            ]
+        }
+    ],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 3
+    }
+}

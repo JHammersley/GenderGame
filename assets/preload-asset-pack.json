@@ -1,0 +1,54 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "assets/jason-1.png",
+                "frameConfig": {
+                    "frameWidth": 192,
+                    "frameHeight": 16,
+                    "startFrame": 0,
+                    "endFrame": 11,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "jason"
+            },
+            {
+                "url": "assets/guapen.png",
+                "type": "image",
+                "key": "guapen"
+            },
+            {
+                "url": "assets/jason.png",
+                "frameConfig": {
+                    "frameWidth": 16,
+                    "frameHeight": 16,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "jason"
+            },
+            {
+                "url": "assets/mainmap.json",
+                "type": "tilemapTiledJSON",
+                "key": "mainmap"
+            },
+            {
+                "url": "assets/Village.png",
+                "type": "image",
+                "key": "Village"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false
+    }
+}
