@@ -1,7 +1,4 @@
-import { Physics } from "phaser";
-
 window.addEventListener('load', function () {
-
 	var game = new Phaser.Game({
 		width: 800,
 		height: 600,
@@ -11,14 +8,14 @@ window.addEventListener('load', function () {
 			mode: Phaser.Scale.FIT,
 			autoCenter: Phaser.Scale.CENTER_BOTH
 		},
-		Physics: {
+		physics: {
 			default: 'arcade',
 			arcade:{
 				gravity: {y: 0},
 				debug:true
 			}
 		}
-	});
+	})
 
 	game.scene.add("Preload", Preload);
 	game.scene.add("Level", Level);

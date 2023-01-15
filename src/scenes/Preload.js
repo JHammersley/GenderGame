@@ -1,8 +1,3 @@
-
-// You can write more code here
-
-/* START OF COMPILED CODE */
-
 class Preload extends Phaser.Scene {
 
 	constructor() {
@@ -17,13 +12,10 @@ class Preload extends Phaser.Scene {
 	editorPreload() {
 
 		this.load.pack("asset-pack", "assets/asset-pack.json");
-	}
 
+	}
 	/** @returns {void} */
 	editorCreate() {
-
-		// guapen
-		const jason = this.add.image(48, 0, "jason");
 
 		// progress
 		const progress = this.add.text(400, 349, "", {});
@@ -48,13 +40,9 @@ class Preload extends Phaser.Scene {
 		this.editorPreload();
 		this.load.spritesheet('jason', '../assets/jason-1.png')
 		this.load.on(Phaser.Loader.Events.COMPLETE, () => this.scene.start("Level"));
-
+		
 		this.jason
 	}
 
 	/* END-USER-CODE */
 }
-
-/* END OF COMPILED CODE */
-
-// You can write more code here

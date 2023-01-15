@@ -32,20 +32,18 @@
         },
         {
             "type": "ArcadeSprite",
-            "id": "669b964c-d25d-4ec6-9984-9c6345196c5b",
-            "label": "arcadesprite_1",
+            "id": "41db6766-ed4c-4438-8b45-e97d7309ad67",
+            "label": "jason",
             "scope": "CLASS",
             "components": [],
             "texture": {
                 "key": "jason",
-                "frame": 20
+                "frame": 3
             },
-            "x": 176,
-            "y": 270,
+            "x": 170,
+            "y": 266,
             "scaleX": 3,
             "scaleY": 3,
-            "allowGravity": false,
-            "collideWorldBounds": true,
             "body.width": 16,
             "body.height": 16
         }

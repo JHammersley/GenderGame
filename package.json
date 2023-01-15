@@ -1,33 +1,30 @@
 {
-  "name": "starter-template-basic-javascript",
-  "version": "1.0.0",
-  "description": "Basic JavaScript project template for Phaser Editor 2D.",
-  "main": "main.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "name": "phaser3-project-template",
+  "version": "1.0.9",
+  "description": "A Phaser 3 Project Template",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "editor": "phasereditor2d-launcher -project . -port 1959",
-    "editor-remote": "phasereditor2d-launcher -project . -disable-open-browser -public -port 1959"
+    "build": "webpack",
+    "start": "npm run build && webpack-dev-server --port=8000"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PhaserEditor2D/starter-template-basic-javascript.git"
+    "url": "git+https://github.com/photonstorm/phaser3-project-template.git"
   },
-  "keywords": [
-    "phaser",
-    "phasereditor2d",
-    "html5",
-    "video-game"
-  ],
-  "author": "Arian Fornaris <developers@phasereditor2d.com> (https://phasereditor2d.com/)",
+  "author": "Richard Davey <rdavey@gmail.com> (http://www.photonstorm.com)",
   "license": "MIT",
+  "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
   "bugs": {
-    "url": "https://github.com/PhaserEditor2D/starter-template-basic-javascript/issues"
+    "url": "https://github.com/photonstorm/phaser3-project-template/issues"
   },
-  "homepage": "https://github.com/PhaserEditor2D/starter-template-basic-javascript#readme",
+  "homepage": "https://github.com/photonstorm/phaser3-project-template#readme",
   "devDependencies": {
-    "phasereditor2d-launcher": "^3.32.0"
+    "raw-loader": "^0.5.1",
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.11.0"
+  },
+  "dependencies": {
+    "phaser": "^3.3.0",
+    "phaser3-project-template": "^1.0.9"
   }
 }

@@ -2,9 +2,9 @@
     "section1": {
         "files": [
             {
-                "url": "assets/dino.png",
-                "key": "dino",
-                "type": "image"
+                "url": "src/scenes/Level.js",
+                "type": "script",
+                "key": "Level"
             }
         ]
     },
@@ -12,6 +12,7 @@
         "app": "Phaser Editor 2D - Asset Pack Editor",
         "contentType": "phasereditor2d.pack.core.AssetContentType",
         "url": "https://phasereditor2d.com",
-        "version": 2
+        "version": 2,
+        "showAllFilesInBlocks": false
     }
 }

@@ -4,7 +4,7 @@
             {
                 "url": "assets/jason-1.png",
                 "frameConfig": {
-                    "frameWidth": 192,
+                    "frameWidth": 16,
                     "frameHeight": 16,
                     "startFrame": 0,
                     "endFrame": 11,
@@ -13,11 +13,6 @@
                 },
                 "type": "spritesheet",
                 "key": "jason"
-            },
-            {
-                "url": "assets/guapen.png",
-                "type": "image",
-                "key": "guapen"
             },
             {
                 "url": "assets/jason.png",
