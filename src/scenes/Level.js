@@ -11,10 +11,6 @@ class Level extends Phaser.Scene {
 
 	constructor() {
 		super("Level");
-
-		/* START-USER-CTR-CODE */
-        // Write your code here.
-        /* END-USER-CTR-CODE */
 	}
 
 	/** @returns {void} */
@@ -40,35 +36,17 @@ class Level extends Phaser.Scene {
 		jason.scaleY = 3;
 		jason.body.setSize(16, 16, false);
 
-		//this.mainLevel_1 = mainLevel_1;
-		//this.jason = jason;
-		//this.mainmap = mainmap;
-		//this.mainmap_1 = mainmap_1;
         this.physics.world.enableBody(jason);
 
 		this.events.emit("scene-awake");
 	}
 
-	/* START-USER-CODE */
-
-    // Write more your code here
-
     create() {
-        //this.physics.startSystem(Phaser.Physics.ARCADE);
         this.editorCreate();
 
-    /* END-USER-CODE */
-
-        //this.scene = scene
-        //this.textureKey = textureKey
-        //this.scene.add.existing(this)
-        //this.scene.physics.world.enableBody(this, 0)
-        //this.type = type
-
+//Jason Walking Animations Create//
         const animFrameRate = 10
         const anims = this.anims
-        //this.health = health
-        //this.facing = 'down'
 
         anims.create({
             key: "down-walk",
