@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "chrome",
+            "name": "http://10.0.0.82:8080/",
+            "request": "launch",
+            "url": "http://10.0.0.82:8080/"
+        }
+    ]
+}

@@ -1,4 +1,4 @@
-class Level extends Phaser.Scene {
+class MainGame extends Phaser.Scene {
 
     /** @type {Phaser.Tilemaps.TilemapLayer} */
 	mainLevel_1;
@@ -44,7 +44,7 @@ class Level extends Phaser.Scene {
     create() {
         this.editorCreate();
 
-//Jason Walking Animations Create//
+        //Jason Walking Animations Create//
         const animFrameRate = 10
         const anims = this.anims
 
@@ -211,5 +211,5 @@ class Level extends Phaser.Scene {
             // console.log(this.facing);
         }
 
-        }
+    }
 }

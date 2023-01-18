@@ -24,7 +24,6 @@ class Preload extends Phaser.Scene {
 		progress.setStyle({ "fontSize": "30px" });
 
 		// progress (components)
-		new PreloadText(progress);
 
 		this.events.emit("scene-awake");
 	}
@@ -35,9 +34,8 @@ class Preload extends Phaser.Scene {
 
 	preload() {
 
-		this.editorCreate();
-
 		this.editorPreload();
+		this.load.pack("pack", "assets/preload-asset-pack.json");
 		this.load.spritesheet('jason', '../assets/jason-1.png')
 		this.load.on(Phaser.Loader.Events.COMPLETE, () => this.scene.start("Level"));
 		
