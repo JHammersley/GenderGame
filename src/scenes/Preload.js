@@ -3,9 +3,6 @@ class Preload extends Phaser.Scene {
 	constructor() {
 		super("Preload");
 
-		/* START-USER-CTR-CODE */
-		// Write your code here.
-		/* END-USER-CTR-CODE */
 	}
 
 	/** @returns {void} */
@@ -28,9 +25,6 @@ class Preload extends Phaser.Scene {
 		this.events.emit("scene-awake");
 	}
 
-	/* START-USER-CODE */
-
-	// Write your code here
 
 	preload() {
 
@@ -42,5 +36,4 @@ class Preload extends Phaser.Scene {
 		this.jason
 	}
 
-	/* END-USER-CODE */
 }
