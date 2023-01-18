@@ -1,6 +1,6 @@
 window.addEventListener('load', function () {
 
-	var game = new Phaser.Game({
+	var gender = new Phaser.Game({
 	type: Phaser.AUTO,
 	width: 800,
 	height: 600,

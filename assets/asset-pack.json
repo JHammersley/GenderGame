@@ -2,9 +2,40 @@
     "section1": {
         "files": [
             {
-                "url": "src/scenes/Level.js",
-                "type": "script",
-                "key": "Level"
+                "url": "assets/jason-1.png",
+                "frameConfig": {
+                    "frameWidth": 16,
+                    "frameHeight": 16,
+                    "startFrame": 0,
+                    "endFrame": 11,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "jason"
+            },
+            {
+                "url": "assets/jason.png",
+                "frameConfig": {
+                    "frameWidth": 16,
+                    "frameHeight": 16,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "jason"
+            },
+            {
+                "url": "assets/mainmap.json",
+                "type": "tilemapTiledJSON",
+                "key": "mainmap"
+            },
+            {
+                "url": "assets/Village.png",
+                "type": "image",
+                "key": "Village"
             }
         ]
     },
