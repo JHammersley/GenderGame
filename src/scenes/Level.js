@@ -1,6 +1,6 @@
 class Level extends Phaser.Scene {
 
-bugger;
+debugger;
 
     /** @type {Phaser.Tilemaps.TilemapLayer} */
 	mainLevel_1;
@@ -39,149 +39,74 @@ bugger;
         this.editorCreate();
 
 			// jason
-			const jason = this.physics.add.sprite(170, 266, "jason", 3);
-			jason.scaleX = 3;
-			jason.scaleY = 3;
-			jason.body.setSize(16, 16, false);
+			this.jason = this.physics.add.sprite(170, 266, "jason", "jason0");
+			this.jason.scaleX = 3;
+			this.jason.scaleY = 3;
+			this.jason.body.setSize(16, 16, false);
 	
-			this.physics.world.enableBody(jason);
+			this.physics.world.enableBody(this.jason);
 			this.cursors = this.input.keyboard.createCursorKeys();
+			
+			// Create animations from the jason spritesheet
+			this.anims.create({
+				key: "jason-walk-up",
+				frames: this.anims.generateFrameNames("jason", {prefix:'jason', start: 9, end: 11}),
+				frameRate: 10,
+				repeat: -1
+			});
 
-        //Jason Walking Animations Create//
-        const animFrameRate = 10
-        const anims = this.anims
+			this.anims.create({
+				key: "jason-walk-left",
+				frames: this.anims.generateFrameNames("jason", {prefix:'jason', start: 3, end: 5}),
+				frameRate: 10,
+				repeat: -1
+			});
 
-        anims.create({
-            key: "down-walk",
-            type: "frame",
-            frames:(
-                {
-                    key: "jason",
-                    frame: 3,
-                    duration: 0,
-                    keyframe: false
-                },
-                {
-                    key: "jason",
-                    frame: 6,
-                    duration: 0,
-                    keyframe: false
-                },
-                {
-                    key: "jason",
-                    frame: 7,
-                    duration: 0,
-                    keyframe: false
-                }
-             ),
-            frameRate: animFrameRate,
-            repeat: -1
-            })
+			this.anims.create({
+				key: "jason-walk-right",
+				frames: this.anims.generateFrameNames("jason", {prefix:'jason', start: 6, end: 8}),
+				frameRate: 10,
+				repeat: -1
+			});
 
-        anims.create({
-            key: "up-walk",
-            type: "frame",
-            frames:(
-                {
-                    key: "jason",
-                    frame: 4,
-                    duration: 0,
-                    keyframe: false
-                },
-                {
-                    key: "jason",
-                    frame: 8,
-                    duration: 0,
-                    keyframe: false
-                },
-                {
-                    key: "jason",
-                    frame: 9,
-                    duration: 0,
-                    keyframe: false
-                }
-                ),
-            frameRate: animFrameRate,
-            repeat: -1
-            })
+			this.anims.create({
+				key: "jason-walk-down",
+				frames: this.anims.generateFrameNames("jason", {prefix:'jason', start: 0, end: 2}),
+				frameRate: 10,
+				repeat: -1
+			});
 
-         anims.create({
-            key: "left-walk",
-            type: "frame",
-            frames:(
-                {
-                    key: "jason",
-                    frame: 2,
-                    duration: 0,
-                    keyframe: false
-                },
-                {
-                    key: "jason",
-                    frame: 1,
-                    duration: 0,
-                    keyframe: false
-                },
-                {
-                    key: "jason",
-                    frame: 0,
-                    duration: 0,
-                    keyframe: false
-                }
-                ),
-            frameRate: animFrameRate,
-            repeat: -1
-            })
-            anims.create({
-                key: "right-walk",
-                type: "frame",
-                frames:(
-                    {
-                        key: "jason",
-                        frame: 5,
-                        duration: 0,
-                        keyframe: false
-                    },
-                    {
-                        key: "jason",
-                        frame: 10,
-                        duration: 0,
-                        keyframe: false
-                    },
-                    {
-                        key: "jason",
-                        frame: 11,
-                        duration: 0,
-                        keyframe: false
-                    }
-                    ),
-                frameRate: animFrameRate,
-                repeat: -1
-                })
-        this.idleFrame = {
-            down: 3,
-            left: 2,
-            right:5,
-            up: 4
-        }
-        //this.setFrame(this.idleFrame.down)
+			this.anims.create({
+				key: "jason-idle-down",
+				frames: [{ key: "jason", frame: 0 }],
+				repeat: -1
+			});
 
-        // Set up player input
-    
-}
+			//this.jason.anims.play("jason-idle-down");
 
-    update(){
-		if (this.cursors.left.isDown) {
-			this.jason.setVelocity(-160);
-			this.jason.anims.play('left-walk', true);
-		} else if (this.cursors.right.isDown) {
-			this.jason.setVelocity(160);
-			this.jason.anims.play('right-walk', true);
-		} else if (this.cursors.up.isDown) {
-			this.jason.setVelocity(-160);
-			this.jason.anims.play('up-walk', true);
+            //this.setFrame(this.idleFrame.down)
+
+            // Set up player input
+        
+    }
+
+    update() {
+		if (this.cursors.up.isDown) {
+			this.jason.setVelocityY(-200); // move up
+			this.jason.anims.play("jason-walk-up");
 		} else if (this.cursors.down.isDown) {
-			this.jason.setVelocity(160);
-			this.jason.anims.play('down-walk', true);
-		}
-	}
+			this.jason.setVelocityY(200); // move down
+			this.jason.anims.play("jason-walk-down");
+		} else if (this.cursors.left.isDown) {
+			this.jason.setVelocityX(-200); // move left
+			this.jason.anims.play("jason-walk-left");
+		} else if (this.cursors.right.isDown) {
+			this.jason.setVelocityX(200); // move right
+			this.jason.anims.play("jason-walk-right");
+		} //else {
+			//this.jason.anims.play("jason-idle-down");
+			//this.jason.setVelocityX(0);
+			//this.jason.setVelocityY(0);
+		//}
+	}	
 }

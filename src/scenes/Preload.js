@@ -30,10 +30,7 @@ class Preload extends Phaser.Scene {
 
 		this.editorPreload();
 		this.load.pack("pack", "assets/preload-asset-pack.json");
-		this.load.spritesheet('jason', '../assets/jason-1.png',{
-			frameWidth: 16,
-			frameHeight: 16
-			});
+		this.load.atlas('jason', '../assets/jason-1.png','../assets/jasonsprite.json');
 		this.load.on(Phaser.Loader.Events.COMPLETE, () => this.scene.start("Level"));
 		
 		this.jason

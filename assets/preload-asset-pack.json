@@ -2,25 +2,12 @@
     "section1": {
         "files": [
             {
-                "url": "assets/jason-1.png",
+                "url": "assets/jasonspritesheet.png",
                 "frameConfig": {
                     "frameWidth": 16,
                     "frameHeight": 16,
                     "startFrame": 0,
                     "endFrame": 11,
-                    "spacing": 0,
-                    "margin": 0
-                },
-                "type": "spritesheet",
-                "key": "jason"
-            },
-            {
-                "url": "assets/jason.png",
-                "frameConfig": {
-                    "frameWidth": 16,
-                    "frameHeight": 16,
-                    "startFrame": 0,
-                    "endFrame": -1,
                     "spacing": 0,
                     "margin": 0
                 },
