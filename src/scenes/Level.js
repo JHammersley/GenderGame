@@ -39,7 +39,7 @@ debugger;
         this.editorCreate();
 
 			// jason
-			this.jason = this.physics.add.sprite(170, 266, "jason", 0);
+			this.jason = this.physics.add.sprite(170, 266, "jason", 0000);
 			this.jason.scaleX = 3;
 			this.jason.scaleY = 3;
 			this.jason.body.setSize(16, 16, false);
@@ -50,35 +50,35 @@ debugger;
 			// Create animations from the jason spritesheet
 			this.anims.create({
 				key: "jason-walk-up",
-				frames: this.anims.generateFrameNames("jason", {start: 9, end: 11, zeroPad: 2, prefix: "jason"}),
+				frames: this.anims.generateFrameNames("this.jason", {start: 6, end: 8, zeroPad: 4, prefix: "jason"}),
 				frameRate: 10,
 				repeat: -1
 			});
 
 			this.anims.create({
 				key: "jason-walk-left",
-				frames: this.anims.generateFrameNames("jason", {start: 3, end: 5, zeroPad: 2, prefix: "jason"}),
+				frames: this.anims.generateFrameNames("jason", {start: 3, end: 5, zeroPad: 4, prefix: "jason"}),
 				frameRate: 10,
 				repeat: -1
 			});
 
 			this.anims.create({
 				key: "jason-walk-right",
-				frames: this.anims.generateFrameNames("jason", {start: 6, end: 8, zeroPad: 2, prefix: "jason"}),
+				frames: this.anims.generateFrameNames("jason", {start: 9, end: 11, zeroPad: 4, prefix: "jason"}),
 				frameRate: 10,
 				repeat: -1
 			});
 
 			this.anims.create({
 				key: "jason-walk-down",
-				frames: this.anims.generateFrameNames("jason", {start: 0, end: 2, zeroPad: 2, prefix: "jason"}),
+				frames: this.anims.generateFrameNames("jason", {start: 0, end: 2, zeroPad: 4, prefix: "jason"}),
 				frameRate: 10,
 				repeat: -1
 			});
 
 			this.anims.create({
 				key: "jason-idle-down",
-				frames: [{ key: "jason", frame: "jason00" }],
+				frames: [{ key: "jason", frame: "jason0000" }],
 				repeat: -1
 			});
 
