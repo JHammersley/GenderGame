@@ -2,7 +2,7 @@
     "section1": {
         "files": [
             {
-                "url": "assets/jasonspritesheet.png",
+                "url": "assets/jasonsprite.png",
                 "frameConfig": {
                     "frameWidth": 16,
                     "frameHeight": 16,

@@ -1,6 +1,12 @@
-window.addEventListener('load', function () {
+import Preload from '/src/scenes/Preload.js';
+import Level from '/src/scenes/Level.js';
 
-	var game = new Phaser.Game({
+//Load our scenes
+var preload = new Preload();
+var level = new Level ();
+
+// game scene
+var config = {
 	type: Phaser.AUTO,
 	width: 800,
 	height: 600,
@@ -15,10 +21,14 @@ window.addEventListener('load', function () {
 			gravity: { y: 0 }
 		}
 	}
-});
+};
+var game = new Phaser.Game(config)
 
-game.scene.add("Preload", Preload);
-game.scene.add("Level", Level);
-game.scene.start("Preload");
-game.scene.start("Level"); // start the Level scene
-});
+// Load Scenes
+game.scene.add("Preload", preload);
+//game.scene.start("Preload");
+game.scene.add("Level", level);
+//game.scene.start("Level"); // start the Level scene
+
+//start Preload
+game.scene.start('Preload');
