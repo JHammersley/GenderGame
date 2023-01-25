@@ -1,4 +1,4 @@
-class Level extends Phaser.Scene {
+export default class Level extends Phaser.Scene {
 
     /** @type {Phaser.Tilemaps.TilemapLayer} */
 	mainLevel_1;
@@ -37,13 +37,18 @@ class Level extends Phaser.Scene {
         this.editorCreate();
 
 			// jason
-			this.jason = this.physics.add.sprite(170, 266, "jason", 0);
-			//this.jason.scaleX = 0;
-			//this.jason.scaleY = 0;
+			this.jason = this.physics.add.sprite(170, 266, "jasonsprite", "jason0003");
+			this.jason.scaleX = 3;
+			this.jason.scaleY = 3;
 			this.jason.body.setSize(16, 16, false);
 	
 			this.physics.world.enableBody(this.jason);
 			this.cursors = this.input.keyboard.createCursorKeys();
+
+			this.cameras.main.setBounds(0, 0, 2160, 912);
+			this.cameras.main.startFollow(this.jason, true);
+			// this.cameras.main.startFollow(this.ship, true, 0.09, 0.09);
+			this.cameras.main.setZoom(1);
 			
 			// Create animations from the jason spritesheet
 			this.anims.create({
@@ -55,7 +60,7 @@ class Level extends Phaser.Scene {
 
 			this.anims.create({
 				key: "jason-walk-left",
-				frames: this.anims.generateFrameNames("jasonsprite", {start: 3, end: 5, zeroPad: 4, prefix: "jason"}),
+				frames: this.anims.generateFrameNames("jasonsprite", {start: 0, end: 2, zeroPad: 4, prefix: "jason"}),
 				frameRate: 10,
 				repeat: -1
 			});
@@ -69,14 +74,14 @@ class Level extends Phaser.Scene {
 
 			this.anims.create({
 				key: "jason-walk-down",
-				frames: this.anims.generateFrameNames("jasonsprite", {start: 0, end: 2, zeroPad: 4, prefix: "jason"}),
+				frames: this.anims.generateFrameNames("jasonsprite", {start: 3, end: 5, zeroPad: 4, prefix: "jason"}),
 				frameRate: 10,
 				repeat: -1
 			});
 
 			this.anims.create({
 				key: "jason-idle-down",
-				frames: [{ key: "jason", frame: "jason0000" }],
+				frames: [{ key: "jasonsprite", frame: "jason0003" }],
 				repeat: -1
 			});
 
@@ -90,21 +95,21 @@ class Level extends Phaser.Scene {
 
     update() {
 		if (this.cursors.up.isDown) {
-			this.jason.setVelocityY(-200); // move up
-			this.jason.anims.play("jason-walk-up");
+			this.jason.setVelocityY(-100); // move up
+			this.jason.anims.play("jason-walk-up", true);
 		} else if (this.cursors.down.isDown) {
-			this.jason.setVelocityY(200); // move down
-			this.jason.anims.play("jason-walk-down");
+			this.jason.setVelocityY(100); // move down
+			this.jason.anims.play("jason-walk-down", true);
 		} else if (this.cursors.left.isDown) {
-			this.jason.setVelocityX(-200); // move left
-			this.jason.anims.play("jason-walk-left");
+			this.jason.setVelocityX(-100); // move left
+			this.jason.anims.play("jason-walk-left", true);
 		} else if (this.cursors.right.isDown) {
-			this.jason.setVelocityX(200); // move right
-			this.jason.anims.play("jason-walk-right");
-		} //else {
-			//this.jason.anims.play("jason-idle-down");
-			//this.jason.setVelocityX(0);
-			//this.jason.setVelocityY(0);
-		//}
+			this.jason.setVelocityX(100); // move right
+			this.jason.anims.play("jason-walk-right", true);
+		} else {
+			this.jason.anims.play("jason-idle-down");
+			this.jason.setVelocityX(0);
+			this.jason.setVelocityY(0);
+		}
 	}	
 }

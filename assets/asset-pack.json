@@ -2,20 +2,6 @@
     "section1": {
         "files": [
             {
-                "url": "assets/jasonsprite.png",
-                "frameConfig": {
-                    "frameWidth": 16,
-                    "frameHeight": 16,
-                    "startFrame": 0,
-                    "endFrame": 11,
-                    "spacing": 0,
-                    "margin": 0,
-                    "jsonURL":"assets/jasonsprite.json"
-                },
-                "type": "spritesheet",
-                "key": "jason"
-            },
-            {
                 "url": "assets/mainmap.json",
                 "type": "tilemapTiledJSON",
                 "key": "mainmap"
