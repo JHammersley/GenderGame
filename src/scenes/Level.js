@@ -1,7 +1,5 @@
 class Level extends Phaser.Scene {
 
-debugger;
-
     /** @type {Phaser.Tilemaps.TilemapLayer} */
 	mainLevel_1;
 	/** @type {Phaser.Physics.Arcade.Sprite} */
@@ -39,9 +37,9 @@ debugger;
         this.editorCreate();
 
 			// jason
-			this.jason = this.physics.add.sprite(170, 266, "jason", 0000);
-			this.jason.scaleX = 3;
-			this.jason.scaleY = 3;
+			this.jason = this.physics.add.sprite(170, 266, "jason", 0);
+			//this.jason.scaleX = 0;
+			//this.jason.scaleY = 0;
 			this.jason.body.setSize(16, 16, false);
 	
 			this.physics.world.enableBody(this.jason);
@@ -50,28 +48,28 @@ debugger;
 			// Create animations from the jason spritesheet
 			this.anims.create({
 				key: "jason-walk-up",
-				frames: this.anims.generateFrameNames("this.jason", {start: 6, end: 8, zeroPad: 4, prefix: "jason"}),
+				frames: this.anims.generateFrameNames("jasonsprite", {start: 6, end: 8, zeroPad: 4, prefix: "jason"}),
 				frameRate: 10,
 				repeat: -1
 			});
 
 			this.anims.create({
 				key: "jason-walk-left",
-				frames: this.anims.generateFrameNames("jason", {start: 3, end: 5, zeroPad: 4, prefix: "jason"}),
+				frames: this.anims.generateFrameNames("jasonsprite", {start: 3, end: 5, zeroPad: 4, prefix: "jason"}),
 				frameRate: 10,
 				repeat: -1
 			});
 
 			this.anims.create({
 				key: "jason-walk-right",
-				frames: this.anims.generateFrameNames("jason", {start: 9, end: 11, zeroPad: 4, prefix: "jason"}),
+				frames: this.anims.generateFrameNames("jasonsprite", {start: 9, end: 11, zeroPad: 4, prefix: "jason"}),
 				frameRate: 10,
 				repeat: -1
 			});
 
 			this.anims.create({
 				key: "jason-walk-down",
-				frames: this.anims.generateFrameNames("jason", {start: 0, end: 2, zeroPad: 4, prefix: "jason"}),
+				frames: this.anims.generateFrameNames("jasonsprite", {start: 0, end: 2, zeroPad: 4, prefix: "jason"}),
 				frameRate: 10,
 				repeat: -1
 			});
