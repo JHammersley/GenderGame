@@ -15,26 +15,35 @@ export default class Level extends Phaser.Scene {
 
 	/** @returns {void} */
 	editorCreate() {
-
-		// mainmap
-		const mainmap = this.add.tilemap("mainmap");
-		mainmap.addTilesetImage("Serene_Village_48x48", "Village");
-
-		// mainmap_1
-		const mainmap_1 = this.add.tilemap("mainmap");
-		mainmap_1.addTilesetImage("Serene_Village_48x48", "Village");
-
-		// background_1
-		mainmap.createLayer("Background", ["Serene_Village_48x48"], 0, 0);
-
-		// mainLevel_1
-		const mainLevel_1 = mainmap_1.createLayer("MainLevel", ["Serene_Village_48x48"], 0, 0);
-
-		this.events.emit("scene-awake");
 	}
 
 	create() {
         this.editorCreate();
+			// mainmap
+			const mainmap = this.add.tilemap("mainmap");
+			mainmap.addTilesetImage("Serene_Village_48x48", "Village");
+	
+			// mainmap_1
+			const mainmap_1 = this.add.tilemap("mainmap");
+			mainmap_1.addTilesetImage("Serene_Village_48x48", "Village");
+	
+			// background_1
+			mainmap.createLayer("Background", ["Serene_Village_48x48"], 0, 0);
+	
+			// mainLevel_1
+			const mainLevel_1 = mainmap_1.createLayer("MainLevel", ["Serene_Village_48x48"], 0, 0);
+	
+			this.events.emit("scene-awake");
+		
+			//map collison
+			mainmap_1.setCollisionByProperty({collides: true});
+
+			const debugGraphics = this.add.graphics().setAlpha(0.75);
+				mainmap_1.renderDebug(debugGraphics, {
+				tileColor: null, // Color of non-colliding tiles
+				collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+				faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+});
 
 			// jason
 			this.jason = this.physics.add.sprite(170, 266, "jasonsprite", "jason0003");
@@ -43,12 +52,14 @@ export default class Level extends Phaser.Scene {
 			this.jason.body.setSize(16, 16, false);
 	
 			this.physics.world.enableBody(this.jason);
+			this.physics.add.collider(this.jason, mainmap_1);
+			this.jason.body.collideWorldBounds=true;
 			this.cursors = this.input.keyboard.createCursorKeys();
-
+			//camera settings
 			this.cameras.main.setBounds(0, 0, 2160, 912);
 			this.cameras.main.startFollow(this.jason, true);
-			// this.cameras.main.startFollow(this.ship, true, 0.09, 0.09);
 			this.cameras.main.setZoom(1);
+
 			
 			// Create animations from the jason spritesheet
 			this.anims.create({

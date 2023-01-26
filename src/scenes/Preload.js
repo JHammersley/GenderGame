@@ -31,9 +31,10 @@ export default class Preload extends Phaser.Scene {
 		this.editorPreload();
 		this.load.pack("pack", "assets/preload-asset-pack.json");
 		this.load.atlas('jasonsprite', '../assets/jasonsprite.png','../assets/jasonsprite.json');
-		//this.load.on(Phaser.Loader.Events.COMPLETE, () => this.scene.add("Level"));
-		//this.load.on(Phaser.Loader.Events.COMPLETE, () => this.scene.start("Level", Level));
-		// Add loading screen bars
+		// load the PNG file
+		this.load.image('base_tiles', 'assets/Village.png');
+		// load the JSON file
+		this.load.tilemapTiledJSON('tilemap', 'assets/mainmap.json');
 		this.graphics = this.add.graphics();
 		this.newGraphics = this.add.graphics();
 		var progressBar = new Phaser.Geom.Rectangle(200, 200, 400, 50);
