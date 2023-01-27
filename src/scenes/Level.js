@@ -53,6 +53,9 @@ export default class Level extends Phaser.Scene {
 			this.jason.body.onWorldBounds = true;
 
 			this.cursors = this.input.keyboard.createCursorKeys();
+
+			//tosha
+			//this.tosha = this.physics.add.sprite(170, 266, "toshasprite", "jason0003");
 			
 			// Create animations from the jason spritesheet
 			this.anims.create({
