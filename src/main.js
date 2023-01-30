@@ -22,13 +22,13 @@ var config = {
 		}
 	}
 };
-var game = new Phaser.Game(config)
+var game = new Phaser.Game(config);
 
 // Load Scenes
 game.scene.add("Preload", preload);
 //game.scene.start("Preload");
 game.scene.add("Level", level);
-//game.scene.start("Level"); // start the Level scene
+
 
 //start Preload
 game.scene.start('Preload');

@@ -28,6 +28,12 @@
                 "key": "tosha"
             },
             {
+                "url": "assets/Tosha/Toshaface.png",
+                "frameConfig": {                },
+                "type": "image",
+                "key": "toshaface"
+            },
+            {
                 "url": "assets/mainmap.json",
                 "type": "tilemapTiledJSON",
                 "key": "mainmap"
@@ -36,7 +42,20 @@
                 "url": "assets/Village.png",
                 "type": "image",
                 "key": "Village"
-            }
+            },
+            {
+            "url": "assets/Game Items/itemssheet.png",
+            "frameConfig": {
+                "frameWidth": 16,
+                "frameHeight": 16,
+                "startFrame": 0,
+                "endFrame": 13,
+                "spacing": 0,
+                "margin": 0
+            },
+            "type": "spritesheet",
+            "key": "items"
+        }
         ]
     },
     "meta": {

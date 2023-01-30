@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="48" tileheight="48" infinite="0" nextlayerid="12" nextobjectid="15">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="48" tileheight="48" infinite="0" nextlayerid="14" nextobjectid="36">
  <editorsettings>
   <export target="assets/mainmap.json" format="json"/>
  </editorsettings>
@@ -4288,6 +4288,9 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="856" name="items" tilewidth="48" tileheight="48" tilecount="14" columns="1">
+  <image source="assets/Game Items/itemssheet.png" width="48" height="672"/>
+ </tileset>
  <layer id="5" name="Background" width="30" height="20">
   <data encoding="csv">
 4,5,6,5,5,5,5,5,5,6,4,4,5,6,4,4,4,4,4,5,6,6,6,4,5,6,6,4,5,6,
@@ -4336,4 +4339,23 @@
 4,4,4,4,4,4,4,4,4,4,390,391,392,393,394,4,4,4,4,4,4,4,4,390,391,392,393,394,4,4
 </data>
  </layer>
+ <objectgroup id="12" name="food">
+  <object id="20" gid="857" x="841.371" y="563.236" width="48" height="48"/>
+  <object id="21" gid="858" x="889.55" y="270.455" width="48" height="48"/>
+  <object id="22" gid="860" x="622.712" y="818.956" width="48" height="48"/>
+  <object id="24" gid="863" x="1065.59" y="555.823" width="48" height="48"/>
+  <object id="25" gid="864" x="1367.64" y="544.705" width="48" height="48"/>
+  <object id="26" gid="865" x="733.895" y="952.375" width="48" height="48"/>
+  <object id="27" gid="866" x="361.433" y="891.224" width="48" height="48"/>
+  <object id="28" gid="867" x="1363.93" y="53.6487" width="48" height="48"/>
+  <object id="29" gid="868" x="1347.25" y="954.228" width="48" height="48"/>
+ </objectgroup>
+ <objectgroup id="13" name="Money">
+  <object id="30" gid="856" x="305.842" y="105.534" width="48" height="48"/>
+  <object id="31" gid="856" x="682.01" y="105.534" width="48" height="48"/>
+  <object id="32" gid="856" x="29.7383" y="930.138" width="48" height="48"/>
+  <object id="33" gid="856" x="231.72" y="553.97" width="48" height="48"/>
+  <object id="34" gid="856" x="1165.65" y="363.107" width="48" height="48"/>
+  <object id="35" gid="856" x="815.429" y="815.25" width="48" height="48"/>
+ </objectgroup>
 </map>

@@ -14,24 +14,20 @@ export default class Preload extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
-		// progress
-		//const progress = this.add.text(400, 349, "", {});
-		//progress.setOrigin(0.5, 0.5);
-		//progress.text = "0%";
-		//progress.setStyle({ "fontSize": "30px" });
-
-		// progress (components)
-
-		//this.events.emit("scene-awake");
 	}
 
 
 	preload() {
 
 		this.editorPreload();
+		//this.load.scenePlugin('rexuiplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js', 'rexUI', 'rexUI');    
+		//this.load.script('rexdialogquest', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexdialogquest.min.js');
+		//this.load.plugin('DialogModalPlugin', '../Components/dialog_plugin.js');
 		this.load.pack("pack", "assets/preload-asset-pack.json");
 		this.load.atlas('jasonsprite', '../assets/jasonsprite.png','../assets/jasonsprite.json');
 		this.load.atlas('toshasprite', '../assets/toshasprite.png','../assets/toshasprite.json');
+		this.load.image('Toshaface', 'assets/Tosha/Toshaface.png');
+		this.load.image('items', 'assets/Game Items/itemsheet.png')
 		// load the PNG file
 		this.load.image('base_tiles', 'assets/Village.png');
 		// load the JSON file
