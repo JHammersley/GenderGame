@@ -34,8 +34,13 @@ export default class Level extends Phaser.Scene {
 			const mainLevel_1 = mainmap.createLayer("MainLevel", ["Serene_Village_48x48"], 0, 0);
 			this.events.emit("scene-awake");
 			//money layer
-			const MoneyLayer = mainmap.createFromObjects('MoneyLayer', ["items"]);
-			const foodlayer = mainmap.createFromObjects('foodlayer', {key: 'Food', frame: 1});
+			const MoneyLayer = mainmap.createFromObjects('Money', {key: 'items', frame: 0});
+			const foodlayer = mainmap.createFromObjects('food', {key: 'items', frame: {start: 1, end: 13}});
+
+			foodlayer.forEach((food) => {
+			  food.setPosition(food.x, food.y);
+			});
+
 
 			// jason
 			this.jason = this.physics.add.sprite(170, 266, "jasonsprite", "jason0003");
@@ -68,19 +73,22 @@ export default class Level extends Phaser.Scene {
 			this.money = this.physics.add.staticGroup()
 			//this is how we actually render our coin object with coin asset we loaded into our game in the preload function
 			MoneyLayer.forEach(object => {
-			this.money.create("money"); 
+			this.money.create('cash'); 
 			this.money.scaleX = 3;
 			this.money.scaleX = 3
 			});
+
+			this.physics.add.collider(this.jason, this.money);
 
 			//items
 			this.food = this.physics.add.staticGroup()
 			//this is how we actually render our coin object with coin asset we loaded into our game in the preload function
 			foodlayer.forEach(object => {
-			let obj = this.food.create("food"); 
-			   obj.setScale(3,3); 
-			   obj.setOrigin(0); 
+			this.food.create('food'); 
+			this.food.scaleX = 3;
+			this.food.scaleY = 3
 			});
+			this.physics.add.collider(this.jason, this.food);
 
 			//collisons
 			this.physics.add.overlap(this.jason, this.money, collectMoney, null, this);
