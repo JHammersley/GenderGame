@@ -44,17 +44,30 @@
                 "key": "Village"
             },
             {
-            "url": "assets/Game Items/itemssheet.png",
+            "url": "assets/Game_Items/items.png",
             "frameConfig": {
                 "frameWidth": 16,
                 "frameHeight": 16,
                 "startFrame": 0,
-                "endFrame": 13,
+                "endFrame": 0,
                 "spacing": 0,
                 "margin": 0
             },
             "type": "spritesheet",
             "key": "items"
+        },
+        {
+            "url": "assets/Game_Items/fooditems.png",
+            "frameConfig": {
+                "frameWidth": 16,
+                "frameHeight": 16,
+                "startFrame": 0,
+                "endFrame": 12,
+                "spacing": 0,
+                "margin": 0
+            },
+            "type": "spritesheet",
+            "key": "fooditems"
         }
         ]
     },

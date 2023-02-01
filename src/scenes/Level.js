@@ -34,8 +34,8 @@ export default class Level extends Phaser.Scene {
 			const mainLevel_1 = mainmap.createLayer("MainLevel", ["Serene_Village_48x48"], 0, 0);
 			this.events.emit("scene-awake");
 			//money layer
-			const MoneyLayer = mainmap.createFromObjects('Money', {key: 'items', frame: 0});
-			const foodlayer = mainmap.createFromObjects('food', {key: 'items', frame: {start: 1, end: 13}});
+			const MoneyLayer = mainmap.createFromTiles('Money', {key: 'items', frames: {start: 0, end: 0, zeroPad: 4, prefix: "items"} });
+			const foodlayer = mainmap.createFromTiles('food', {key: 'fooditems', frames: {start: 0, end: 12, zeroPad: 4, prefix: "items"} });
 
 			foodlayer.forEach((food) => {
 			  food.setPosition(food.x, food.y);

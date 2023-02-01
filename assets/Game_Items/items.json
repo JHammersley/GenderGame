@@ -1,335 +1,335 @@
 {
   "frames": {
-    "Currency_4.png": {
+    "items0000.png": {
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "sourceSize": {
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "pivot": {
         "x": 0.5,
         "y": 0.5
       }
     },
-    "Food_0.png": {
+    "items0001.png": {
+      "frame": {
+        "x": 0,
+        "y": 16,
+        "w": 16,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 16,
+        "h": 16
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "items0002.png": {
+      "frame": {
+        "x": 0,
+        "y": 32,
+        "w": 16,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 16,
+        "h": 16
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "items0003.png": {
       "frame": {
         "x": 0,
         "y": 48,
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "sourceSize": {
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "pivot": {
         "x": 0.5,
         "y": 0.5
       }
     },
-    "Food_12.png": {
+    "items0004.png": {
+      "frame": {
+        "x": 0,
+        "y": 64,
+        "w": 16,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 16,
+        "h": 16
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "items0005.png": {
+      "frame": {
+        "x": 0,
+        "y": 80,
+        "w": 16,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 16,
+        "h": 16
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "items0006.png": {
       "frame": {
         "x": 0,
         "y": 96,
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "sourceSize": {
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "pivot": {
         "x": 0.5,
         "y": 0.5
       }
     },
-    "Food_16.png": {
+    "items0007.png": {
+      "frame": {
+        "x": 0,
+        "y": 112,
+        "w": 16,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 16,
+        "h": 16
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "items0008.png": {
+      "frame": {
+        "x": 0,
+        "y": 128,
+        "w": 16,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 16,
+        "h": 16
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "items0009.png": {
       "frame": {
         "x": 0,
         "y": 144,
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "sourceSize": {
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "pivot": {
         "x": 0.5,
         "y": 0.5
       }
     },
-    "Food_18.png": {
+    "items0010.png": {
+      "frame": {
+        "x": 0,
+        "y": 160,
+        "w": 16,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 16,
+        "h": 16
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "items0011.png": {
+      "frame": {
+        "x": 0,
+        "y": 176,
+        "w": 16,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 16,
+        "h": 16
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "items0012.png": {
       "frame": {
         "x": 0,
         "y": 192,
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "sourceSize": {
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "pivot": {
         "x": 0.5,
         "y": 0.5
       }
     },
-    "Food_2.png": {
+    "items0013.png": {
       "frame": {
         "x": 0,
-        "y": 240,
-        "w": 48,
-        "h": 48
+        "y": 208,
+        "w": 16,
+        "h": 16
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "sourceSize": {
-        "w": 48,
-        "h": 48
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "Food_21.png": {
-      "frame": {
-        "x": 0,
-        "y": 288,
-        "w": 48,
-        "h": 48
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "sourceSize": {
-        "w": 48,
-        "h": 48
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "Food_24.png": {
-      "frame": {
-        "x": 0,
-        "y": 336,
-        "w": 48,
-        "h": 48
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "sourceSize": {
-        "w": 48,
-        "h": 48
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "Food_30.png": {
-      "frame": {
-        "x": 0,
-        "y": 384,
-        "w": 48,
-        "h": 48
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "sourceSize": {
-        "w": 48,
-        "h": 48
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "Food_31.png": {
-      "frame": {
-        "x": 0,
-        "y": 432,
-        "w": 48,
-        "h": 48
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "sourceSize": {
-        "w": 48,
-        "h": 48
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "Food_4.png": {
-      "frame": {
-        "x": 0,
-        "y": 480,
-        "w": 48,
-        "h": 48
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "sourceSize": {
-        "w": 48,
-        "h": 48
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "Food_5.png": {
-      "frame": {
-        "x": 0,
-        "y": 528,
-        "w": 48,
-        "h": 48
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "sourceSize": {
-        "w": 48,
-        "h": 48
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "Potion_21.png": {
-      "frame": {
-        "x": 0,
-        "y": 576,
-        "w": 48,
-        "h": 48
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "sourceSize": {
-        "w": 48,
-        "h": 48
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "Potion_27.png": {
-      "frame": {
-        "x": 0,
-        "y": 624,
-        "w": 48,
-        "h": 48
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "sourceSize": {
-        "w": 48,
-        "h": 48
+        "w": 16,
+        "h": 16
       },
       "pivot": {
         "x": 0.5,
@@ -340,12 +340,12 @@
   "meta": {
     "app": "http://free-tex-packer.com",
     "version": "0.6.7",
-    "image": "itemssheet.png",
+    "image": "items.png",
     "format": "RGBA8888",
     "size": {
-      "w": 48,
-      "h": 672
+      "w": 16,
+      "h": 224
     },
-    "scale": 3
+    "scale": 1
   }
 }
