@@ -27,8 +27,8 @@ export default class Preload extends Phaser.Scene {
 		this.load.atlas('jasonsprite', '../assets/jasonsprite.png','../assets/jasonsprite.json');
 		this.load.atlas('toshasprite', '../assets/toshasprite.png','../assets/toshasprite.json');
 		this.load.image('Toshaface', 'assets/Tosha/Toshaface.png');
-		this.load.atlas('items', 'assets/Game_Items/items.png','assets/Game_Items/items.json')
-		this.load.atlas('fooditems', 'assets/Game_Items/fooditems.png','assets/Game_Items/fooditems.json')
+		this.load.atlas('fitems', 'assets/Game_Items/items.png','assets/Game_Items/items.json');
+		this.load.atlas('fooditemstest', 'assets/Game_Items/fooditems.png','assets/Game_Items/fooditems.json');
 		// load the PNG file
 		this.load.image('base_tiles', 'assets/Village.png');
 		// load the JSON file

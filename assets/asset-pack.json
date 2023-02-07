@@ -10,6 +10,19 @@
                 "url": "assets/Village.png",
                 "type": "image",
                 "key": "Village"
+            },
+            {
+                "url": "assets/Game_Items/items.png",
+                "frameConfig": {
+                    "frameWidth": 16,
+                    "frameHeight": 16,
+                    "startFrame": 0,
+                    "endFrame": 0,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "items"
             }
         ]
     },
