@@ -26,7 +26,6 @@ var game = new Phaser.Game(config);
 
 // Load Scenes
 game.scene.add("Preload", preload);
-//game.scene.start("Preload");
 game.scene.add("Level", level);
 
 

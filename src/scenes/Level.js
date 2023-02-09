@@ -38,13 +38,13 @@ export default class Level extends Phaser.Scene {
 
 			//money layer
 			const MoneyLayer = mainmap.createFromTiles('Money', ["items"]);
-			const foodlayer = mainmap.createFromObjects('food',  ["items"]);
-			const foodFrames = this.anims.generateFrameNames("items", {start: 1, end: 13, zeroPad: 4, prefix: "items", suffix: ".png"});
-			foodlayer.forEach(food => {
-				const randomIndex = Phaser.Math.Between(0, foodFrames.length - 1);
-				const randomFrame = foodFrames.splice(randomIndex, 1)[0];
-				food.setFrame(randomFrame);
-			});
+			const food = mainmap.getObectLayer('food','items', {key: 'gameobjects',frame: 1});
+			//const foodFrames = this.anims.generateFrameNames("fitems", {start: 1, end: 13, zeroPad: 4, prefix: "items", suffix: ".png"});
+			//foodlayer.forEach(food => {
+			//	const randomIndex = Phaser.Math.Between(0, foodFrames.length - 1);
+			//	const randomFrame = foodFrames.splice(randomIndex, 1)[0];
+			//	food.setFrame(randomFrame);
+			//});
 
 			// jason
 			this.jason = this.physics.add.sprite(170, 266, "jasonsprite", "jason0003");
@@ -66,7 +66,7 @@ export default class Level extends Phaser.Scene {
 			this.cursors = this.input.keyboard.createCursorKeys();
 
 			//tosha
-			this.tosha = this.physics.add.sprite(120, 204, "toshasprite", "Tosha0000");
+			this.tosha = this.physics.add.sprite(120, 204, "toshasprite", "Tosha0000").setImmovable();
 			this.tosha.scaleX = 3;
 			this.tosha.scaleY = 3;
 			this.tosha.body.setSize(16, 16, false);
@@ -84,7 +84,7 @@ export default class Level extends Phaser.Scene {
 			this.physics.add.collider(this.jason, this.money);
 
 			//items
-			this.food = this.physics.add.staticGroup();
+			this.food = this.physics.add.staticGroup(food);
 			//this.mainmap.createFromTiles('food', '12', {key: 'fitems', frameStart: 1, frameEnd: 13}, true, false);
 			this.food.scaleX = 3;
 			this.food.scaleY = 3;
