@@ -37,15 +37,15 @@ export default class Level extends Phaser.Scene {
 			this.events.emit("scene-awake");
 
 			//money layer
-			const MoneyLayer = mainmap.createFromTiles('Money', ["items"]);
-			const food = mainmap.getObectLayer('food','items', {key: 'gameobjects',frame: 1});
-			//const foodFrames = this.anims.generateFrameNames("fitems", {start: 1, end: 13, zeroPad: 4, prefix: "items", suffix: ".png"});
-			//foodlayer.forEach(food => {
-			//	const randomIndex = Phaser.Math.Between(0, foodFrames.length - 1);
-			//	const randomFrame = foodFrames.splice(randomIndex, 1)[0];
-			//	food.setFrame(randomFrame);
-			//});
-
+			const Money = mainmap.createFromObjects('Money', {key: 'Money', Frame:'items0000.png'});
+			const food = mainmap.createFromObjects('food', {key: 'food'});
+			const foodFrames = this.textures.get("food").getFrameNames("food", {start: 1, end: 13, zeroPad: 4, prefix: "items", suffix: ".png"});
+			food.forEach((foodItem, index) => {
+			  const randomIndex = Phaser.Math.Between(0, foodFrames.length - 1);
+			  const randomFrame = foodFrames[randomIndex];
+			  foodItem.setFrame(randomFrame);
+			});
+			
 			// jason
 			this.jason = this.physics.add.sprite(170, 266, "jasonsprite", "jason0003");
 			this.jason.scaleX = 3;
@@ -74,32 +74,36 @@ export default class Level extends Phaser.Scene {
 
 			//money
 			let moneyScore = 0;
-			this.money = this.physics.add.staticGroup()
-			MoneyLayer.forEach(object => {
-			this.money.create('Money'); 
-			this.money.scaleX = 3;
-			this.money.scaleX = 3
-			});
-
+			this.Money = this.physics.add.staticGroup(Money)
+			this.Money.scaleX = 3;
+			this.Money.scaleX = 3;
 			this.physics.add.collider(this.jason, this.money);
 
 			//items
+			let foodScore = 0;
 			this.food = this.physics.add.staticGroup(food);
-			//this.mainmap.createFromTiles('food', '12', {key: 'fitems', frameStart: 1, frameEnd: 13}, true, false);
 			this.food.scaleX = 3;
 			this.food.scaleY = 3;
 			this.physics.add.collider(this.jason, this.food);
 
 
 			//collisons
-			this.physics.add.overlap(this.jason, this.money, collectMoney, null, this);
-		
+			this.physics.add.overlap(this.jason, this.Money);
+			  
+			  this.physics.add.overlap(this.jason, this.food);
+			  		
 			//score
 			this.text = this.add.text(570, 70, `Money: ${moneyScore}x`, {
 			  fontSize: '20px',
 			  fill: '#ffffff'
 			});
 			this.text.setScrollFactor(0);
+
+			this.text = this.add.text(235, 70, `food: ${foodScore}x`, {
+				fontSize: '20px',
+				fill: '#ffffff'
+			  });
+			  this.text.setScrollFactor(0);
 
 			//animations	
 			this.anims.create({
@@ -142,7 +146,20 @@ export default class Level extends Phaser.Scene {
 				this.text.setText(`Money: ${moneyScore}x`); // set the text to show the current score
 				return false;
 			}
-		
+
+			function collectfood() {
+				this.food.disableBody(true, true); // remove the tile/coin
+				foodScore += 1; // increment the score
+				this.text.setText(`food: ${foodScore}x`); // set the text to show the current score
+				return false;
+			}
+		//Music
+		var music;
+		var musicList = ['Happy Trails higher.wav', 'River 6-29.wav', 'Up a Tree.wav'];
+		var currentTrack = 0;
+				music = add.audio('Happy Trails higher');
+				music.volume = 0.5;
+				music.play();
 	}
 			
     update() {
@@ -162,6 +179,17 @@ export default class Level extends Phaser.Scene {
 			this.jason.anims.play("jason-idle-down");
 			this.jason.setVelocityX(0);
 			this.jason.setVelocityY(0);
+		}
+
+	//music 
+		if (!music.isPlaying) {
+			currentTrack++;
+			if (currentTrack >= musicList.length) {
+				currentTrack = 0;
+			}
+			music.destroy();
+			music = add.audio(musicList[currentTrack].split('.')[0]);
+			music.play();
 		}
 	}
 	
