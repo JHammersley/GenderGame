@@ -17,6 +17,17 @@ export default class Level extends Phaser.Scene {
 	/** @type {Phaser.Physics.Arcade.Sprite} */
     food;
 
+	collectMoney(jason, money) {
+		money.destroy();
+		this.moneyScore ++;
+		console.log(`Money Score: ${this.moneyScore}`);
+	}
+	
+	collectFood(jason, food) {
+		food.destroy();
+		this.foodScore += 1;
+		console.log(`Food Score: ${this.foodScore}`);
+	}
 
 	constructor() {
 		super("Level");
@@ -73,37 +84,28 @@ export default class Level extends Phaser.Scene {
 			this.physics.add.collider(this.jason, this.tosha, this.interact, null, this);
 
 			//money
-			let moneyScore = 0;
+			this.moneyScore = 0;
 			this.Money = this.physics.add.staticGroup(Money)
 			this.Money.scaleX = 3;
 			this.Money.scaleX = 3;
-			this.physics.add.collider(this.jason, this.money);
+			this.physics.add.collider(this.jason, this.Money, this.collectMoney, null, this);
 
 			//items
-			let foodScore = 0;
+			this.foodScore = 0;
 			this.food = this.physics.add.staticGroup(food);
 			this.food.scaleX = 3;
 			this.food.scaleY = 3;
-			this.physics.add.collider(this.jason, this.food);
+			this.physics.add.collider(this.jason, this.food, this.collectFood, null, this);
+
 
 
 			//collisons
 			this.physics.add.overlap(this.jason, this.Money);
 			  
-			  this.physics.add.overlap(this.jason, this.food);
+			this.physics.add.overlap(this.jason, this.food);
 			  		
-			//score
-			this.text = this.add.text(570, 70, `Money: ${moneyScore}x`, {
-			  fontSize: '20px',
-			  fill: '#ffffff'
-			});
-			this.text.setScrollFactor(0);
-
-			this.text = this.add.text(235, 70, `food: ${foodScore}x`, {
-				fontSize: '20px',
-				fill: '#ffffff'
-			  });
-			  this.text.setScrollFactor(0);
+			this.moneyText = this.add.text(16, 16, "Money: 0", { fontSize: "32px", fill: "#000" });
+  			this.foodText = this.add.text(16, 48, "Food: 0", { fontSize: "32px", fill: "#000" });
 
 			//animations	
 			this.anims.create({
@@ -140,26 +142,28 @@ export default class Level extends Phaser.Scene {
 				repeat: -1
 			});
 
-			function collectMoney() {
-				this.money.disableBody(true, true); // remove the tile/coin
-				moneyScore += 20000; // increment the score
-				this.text.setText(`Money: ${moneyScore}x`); // set the text to show the current score
-				return false;
-			}
+			//function collectMoney() {
+			//	this.money.disableBody(true, true); // remove the tile/coin
+			//	moneyScore += 20000; // increment the score
+			//	this.text.setText(`Money: ${moneyScore}x`); // set the text to show the current score
+			//	return false;
+			//}
 
-			function collectfood() {
-				this.food.disableBody(true, true); // remove the tile/coin
-				foodScore += 1; // increment the score
-				this.text.setText(`food: ${foodScore}x`); // set the text to show the current score
-				return false;
-			}
+			//function collectfood() {
+			//	this.food.disableBody(true, true); // remove the tile/coin
+			//	foodScore += 1; // increment the score
+			//	this.text.setText(`food: ${foodScore}x`); // set the text to show the current score
+			//	return false;
+			//}
+
+
 		//Music
-		var music;
-		var musicList = ['Happy Trails higher.wav', 'River 6-29.wav', 'Up a Tree.wav'];
-		var currentTrack = 0;
-				music = add.audio('Happy Trails higher');
-				music.volume = 0.5;
-				music.play();
+		//var music;
+		//var musicList = ['Happy Trails higher.wav', 'River 6-29.wav', 'Up a Tree.wav'];
+		//var currentTrack = 0;
+		//		this.music = audio('Happy Trails higher');
+		//		this.music.volume = 0.5;
+		//		this.music.play();
 	}
 			
     update() {
@@ -182,15 +186,22 @@ export default class Level extends Phaser.Scene {
 		}
 
 	//music 
-		if (!music.isPlaying) {
-			currentTrack++;
-			if (currentTrack >= musicList.length) {
-				currentTrack = 0;
-			}
-			music.destroy();
-			music = add.audio(musicList[currentTrack].split('.')[0]);
-			music.play();
-		}
+	//	if (!music.isPlaying) {
+	//		currentTrack++;
+	//		if (currentTrack >= musicList.length) {
+	//			currentTrack = 0;
+	//		}
+	//		music.destroy();
+	//		music = add.audio(musicList[currentTrack].split('.')[0]);
+	//		music.play();
+	//	}
+
+		this.physics.add.collider(this.jason, this.Money, this.collectMoney, null, this);
+		this.physics.add.collider(this.jason, this.food, this.collectFood, null, this);
+		this.moneyText.setText(`Money: ${this.moneyScore}`);
+  		this.foodText.setText(`Food: ${this.foodScore}`);
+
+
 	}
 	
 }
