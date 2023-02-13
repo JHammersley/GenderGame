@@ -2,6 +2,45 @@
     "section1": {
         "files": [
             {
+                "url": "assets/Game_Items/fooditems.png",
+                "frameConfig": {
+                    "frameWidth": 16,
+                    "frameHeight": 16,
+                    "startFrame": 0,
+                    "endFrame": 12,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "fooditems"
+            },
+            {
+                "url": "assets/GUI/GUI.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "GUI"
+            },
+            {
+                "url": "assets/Game_Items/items.png",
+                "frameConfig": {
+                    "frameWidth": 16,
+                    "frameHeight": 16,
+                    "startFrame": 0,
+                    "endFrame": 0,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "items"
+            },
+            {
                 "url": "assets/jasonsprite.png",
                 "frameConfig": {
                     "frameWidth": 16,
@@ -13,6 +52,11 @@
                 },
                 "type": "spritesheet",
                 "key": "jason"
+            },
+            {
+                "url": "assets/mainmap.json",
+                "type": "tilemapTiledJSON",
+                "key": "mainmap"
             },
             {
                 "url": "assets/toshasprite.png",
@@ -29,46 +73,15 @@
             },
             {
                 "url": "assets/Tosha/Toshaface.png",
-                "frameConfig": {                },
+                "frameConfig": {},
                 "type": "image",
                 "key": "toshaface"
-            },
-            {
-                "url": "assets/mainmap.json",
-                "type": "tilemapTiledJSON",
-                "key": "mainmap"
             },
             {
                 "url": "assets/Village.png",
                 "type": "image",
                 "key": "Village"
-            },
-            {
-            "url": "assets/Game_Items/items.png",
-            "frameConfig": {
-                "frameWidth": 16,
-                "frameHeight": 16,
-                "startFrame": 0,
-                "endFrame": 0,
-                "spacing": 0,
-                "margin": 0
-            },
-            "type": "spritesheet",
-            "key": "items"
-        },
-        {
-            "url": "assets/Game_Items/fooditems.png",
-            "frameConfig": {
-                "frameWidth": 16,
-                "frameHeight": 16,
-                "startFrame": 0,
-                "endFrame": 12,
-                "spacing": 0,
-                "margin": 0
-            },
-            "type": "spritesheet",
-            "key": "fooditems"
-        }
+            }
         ]
     },
     "meta": {

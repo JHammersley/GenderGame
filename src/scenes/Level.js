@@ -101,11 +101,12 @@ export default class Level extends Phaser.Scene {
 
 			//collisons
 			this.physics.add.overlap(this.jason, this.Money);
-			  
 			this.physics.add.overlap(this.jason, this.food);
 			  		
 			this.moneyText = this.add.text(16, 16, "Money: 0", { fontSize: "32px", fill: "#000" });
   			this.foodText = this.add.text(16, 48, "Food: 0", { fontSize: "32px", fill: "#000" });
+			this.foodText.setScrollFactor(0);
+			this.moneyText.setScrollFactor(0);
 
 			//animations	
 			this.anims.create({
@@ -141,20 +142,6 @@ export default class Level extends Phaser.Scene {
 				frames: [{ key: "jasonsprite", frame: "jason0003" }],
 				repeat: -1
 			});
-
-			//function collectMoney() {
-			//	this.money.disableBody(true, true); // remove the tile/coin
-			//	moneyScore += 20000; // increment the score
-			//	this.text.setText(`Money: ${moneyScore}x`); // set the text to show the current score
-			//	return false;
-			//}
-
-			//function collectfood() {
-			//	this.food.disableBody(true, true); // remove the tile/coin
-			//	foodScore += 1; // increment the score
-			//	this.text.setText(`food: ${foodScore}x`); // set the text to show the current score
-			//	return false;
-			//}
 
 
 		//Music
