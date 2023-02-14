@@ -29,6 +29,27 @@ export default class Level extends Phaser.Scene {
 		console.log(`Food Score: ${this.foodScore}`);
 	}
 
+	interact(jason, tosha) {
+		const dialogue = ["Hi, I'm Tosha.", "How can I help you today?"];
+		let currentDialogue = 0;
+		
+		const dialogueBox = this.add.rectangle(0, 0, 300, 60, 0x000000).setOrigin(0);
+		const text = this.add.text(10, 10, dialogue[currentDialogue], { font: "20px Arial", fill: "#ffffff" });
+		
+		this.input.keyboard.once("keydown_SPACE", () => {
+			currentDialogue++;
+			
+			if (currentDialogue >= dialogue.length) {
+				dialogueBox.destroy();
+				text.destroy();
+				return;
+			}
+			
+			text.setText(dialogue[currentDialogue]);
+		});
+	}
+
+
 	constructor() {
 		super("Level");
 	}
@@ -187,7 +208,6 @@ export default class Level extends Phaser.Scene {
 		this.physics.add.collider(this.jason, this.food, this.collectFood, null, this);
 		this.moneyText.setText(`Money: ${this.moneyScore}`);
   		this.foodText.setText(`Food: ${this.foodScore}`);
-
 
 	}
 	
