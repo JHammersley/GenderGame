@@ -8,8 +8,8 @@ var level = new Level ();
 // game scene
 var config = {
 	type: Phaser.AUTO,
-	width: 800,
-	height: 600,
+	width: 640,
+	height: 480,
 	scale: {
 		mode: Phaser.Scale.FIT,
 		autoCenter: Phaser.Scale.CENTER_BOTH

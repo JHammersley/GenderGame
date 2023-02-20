@@ -20,9 +20,6 @@ export default class Preload extends Phaser.Scene {
 	preload() {
 
 		this.editorPreload();
-		//this.load.scenePlugin('rexuiplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js', 'rexUI', 'rexUI');    
-		//this.load.script('rexdialogquest', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexdialogquest.min.js');
-		//this.load.plugin('DialogModalPlugin', '../Components/dialog_plugin.js');
 		this.load.pack("pack", "assets/preload-asset-pack.json");
 		this.load.atlas('jasonsprite', '../assets/jasonsprite.png','../assets/jasonsprite.json');
 		this.load.atlas('toshasprite', '../assets/toshasprite.png','../assets/toshasprite.json');
@@ -30,9 +27,9 @@ export default class Preload extends Phaser.Scene {
 		this.load.atlas('food', 'assets/Game_Items/items.png','assets/Game_Items/items.json');
 		this.load.image('Money', 'assets/Game_Items/items0000.png');
 		this.load.image('base_tiles', 'assets/Village.png');
-		this.load.audio('Happy Trails higher', 'assets/Music/Happy Trails higher.wav');
-    	this.load.audio('River 6-29','assets/Music/River 6-29.wav');
-   		this.load.audio('Up a Tree', 'assets/Music/Up a Tree.wav');
+		this.load.audio('Song1', 'assets/Music/Happy Trails higher.wav');
+    	this.load.audio('Song2','assets/Music/River 6-29.wav');
+   		this.load.audio('Song3', 'assets/Music/Up a Tree.wav');
 
 
 

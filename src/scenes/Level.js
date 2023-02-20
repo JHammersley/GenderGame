@@ -16,38 +16,83 @@ export default class Level extends Phaser.Scene {
     tosha;
 	/** @type {Phaser.Physics.Arcade.Sprite} */
     food;
+	/** @type {Phaser.Sound.WebAudioSoundManager#play} */
+	backgroundMusic;
 
 	collectMoney(jason, money) {
 		money.destroy();
 		this.moneyScore ++;
+		this.fixedToCamera = true;
 		console.log(`Money Score: ${this.moneyScore}`);
 	}
 	
 	collectFood(jason, food) {
 		food.destroy();
 		this.foodScore += 1;
+		this.fixedToCamera = true;
 		console.log(`Food Score: ${this.foodScore}`);
 	}
 
-	interact(jason, tosha) {
-		const dialogue = ["Hi, I'm Tosha.", "How can I help you today?"];
-		let currentDialogue = 0;
-		
-		const dialogueBox = this.add.rectangle(0, 0, 300, 60, 0x000000).setOrigin(0);
-		const text = this.add.text(10, 10, dialogue[currentDialogue], { font: "20px Arial", fill: "#ffffff" });
-		
-		this.input.keyboard.once("keydown_SPACE", () => {
-			currentDialogue++;
-			
-			if (currentDialogue >= dialogue.length) {
-				dialogueBox.destroy();
-				text.destroy();
-				return;
-			}
-			
-			text.setText(dialogue[currentDialogue]);
-		});
+	checkWinCondition() {
+		const totalCollected = this.moneyScore + this.foodScore;
+		if (totalCollected === this.totalItems) {
+		  console.log("You win!");
+		}
 	}
+
+	createSpeechBubble (x, y, width, height, quote)
+{
+    var bubbleWidth = width;
+    var bubbleHeight = height;
+    var bubblePadding = 10;
+    var arrowHeight = bubbleHeight / 3;
+
+    var bubble = this.add.graphics({ x: x, y: y });
+
+    //  Bubble shadow
+    bubble.fillStyle(0x222222, 0.5);
+    bubble.fillRoundedRect(6, 6, bubbleWidth, bubbleHeight, 16);
+
+    //  Bubble color
+    bubble.fillStyle(0xffffff, 1);
+
+    //  Bubble outline line style
+    bubble.lineStyle(4, 0x565656, 1);
+
+    //  Bubble shape and outline
+    bubble.strokeRoundedRect(0, 0, bubbleWidth, bubbleHeight, 16);
+    bubble.fillRoundedRect(0, 0, bubbleWidth, bubbleHeight, 16);
+
+    //  Calculate arrow coordinates
+    var point1X = Math.floor(bubbleWidth / 4);
+    var point1Y = bubbleHeight;
+    var point2X = Math.floor((bubbleWidth / 4) * 1.4);
+    var point2Y = bubbleHeight;
+    var point3X = Math.floor(bubbleWidth / 4);
+    var point3Y = Math.floor(bubbleHeight + arrowHeight);
+
+    //  Bubble arrow shadow
+    bubble.lineStyle(4, 0x222222, 0.5);
+    bubble.lineBetween(point2X - 1, point2Y + 6, point3X + 2, point3Y);
+
+    //  Bubble arrow fill
+    bubble.fillTriangle(point1X, point1Y, point2X, point2Y, point3X, point3Y);
+    bubble.lineStyle(2, 0x565656, 1);
+    bubble.lineBetween(point2X, point2Y, point3X, point3Y);
+    bubble.lineBetween(point1X, point1Y, point3X, point3Y);
+
+    var content = this.add.text(0, 0, quote, { fontFamily: 'Arial', fontSize: 20, color: '#000000', align: 'center', wordWrap: { width: bubbleWidth - (bubblePadding * 2) } });
+
+    var b = content.getBounds();
+
+    content.setPosition(bubble.x + (bubbleWidth / 2) - (b.width / 2), bubble.y + (bubbleHeight / 2) - (b.height / 2));
+
+    var container = this.add.container();
+
+    container.add([ bubble, content ]);
+
+    return container;
+}
 
 
 	constructor() {
@@ -85,6 +130,7 @@ export default class Level extends Phaser.Scene {
 			this.jason.body.setSize(16, 16, false);
 
 			//camera settings
+			this.cameras.main.setBounds(0, 0, mainmap.widthInPixels, mainmap.heightInPixels);
 			this.cameras.main.startFollow(this.jason, true);
 			this.cameras.main.setZoom(1);
 	
@@ -102,7 +148,7 @@ export default class Level extends Phaser.Scene {
 			this.tosha.scaleX = 3;
 			this.tosha.scaleY = 3;
 			this.tosha.body.setSize(16, 16, false);
-			this.physics.add.collider(this.jason, this.tosha, this.interact, null, this);
+			this.physics.add.collider(this.jason, this.tosha, this.bubble1, null, this);
 
 			//money
 			this.moneyScore = 0;
@@ -117,8 +163,11 @@ export default class Level extends Phaser.Scene {
 			this.food.scaleX = 3;
 			this.food.scaleY = 3;
 			this.physics.add.collider(this.jason, this.food, this.collectFood, null, this);
-
-
+			// Check for collisions between jason and tosha
+			this.physics.add.collider(this.jason, this.tosha, () => {
+				// When they collide, create a speech bubble with the quote "Hi, Tosha!"
+				this.createSpeechBubble(this.tosha.x, this.tosha.y - 50, 200, 100, "Hi, Tosha!"),null,this
+			});
 
 			//collisons
 			this.physics.add.overlap(this.jason, this.Money);
@@ -164,16 +213,42 @@ export default class Level extends Phaser.Scene {
 				repeat: -1
 			});
 
+			var musicFiles = [    'Song1',    'Song2',    'Song3'];
 
-		//Music
-		//var music;
-		//var musicList = ['Happy Trails higher.wav', 'River 6-29.wav', 'Up a Tree.wav'];
-		//var currentTrack = 0;
-		//		this.music = audio('Happy Trails higher');
-		//		this.music.volume = 0.5;
-		//		this.music.play();
+			var currentMusicIndex = 0;
+
+			var playNextSong = function(game) {
+				if (currentMusicIndex >= musicFiles.length) {
+					return; // Stop playing when all songs have been played
+				}
+
+				var music = game.sound.add(musicFiles[currentMusicIndex], {
+					volume: 0.1
+				});
+
+				music.once('ended', function() {
+					music.destroy();
+					currentMusicIndex++;
+					playNextSong(this);
+				});
+
+				music.play();
+			}
+
+			playNextSong(this);
+
+
+			var bubble1 = this.createSpeechBubble(128, 128, 220, 80, "Global Handler!");
+			var bubble2 = this.createSpeechBubble(290, 180, 220, 80, "Global Key Code!");
+			var bubble3 = this.createSpeechBubble(560, 180, 220, 80, "Local Handler!");
+
+			bubble1.setVisible(false);
+			bubble2.setVisible(false);
+			bubble3.setVisible(false);
+
 	}
-			
+
+	
     update() {
 		if (this.cursors.up.isDown) {
 			this.jason.setVelocityY(-100); // move up
@@ -193,21 +268,11 @@ export default class Level extends Phaser.Scene {
 			this.jason.setVelocityY(0);
 		}
 
-	//music 
-	//	if (!music.isPlaying) {
-	//		currentTrack++;
-	//		if (currentTrack >= musicList.length) {
-	//			currentTrack = 0;
-	//		}
-	//		music.destroy();
-	//		music = add.audio(musicList[currentTrack].split('.')[0]);
-	//		music.play();
-	//	}
-
 		this.physics.add.collider(this.jason, this.Money, this.collectMoney, null, this);
 		this.physics.add.collider(this.jason, this.food, this.collectFood, null, this);
 		this.moneyText.setText(`Money: ${this.moneyScore}`);
   		this.foodText.setText(`Food: ${this.foodScore}`);
+		this.checkWinCondition();
 
 	}
 	
