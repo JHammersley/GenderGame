@@ -148,7 +148,12 @@ export default class Level extends Phaser.Scene {
 			this.tosha.scaleX = 3;
 			this.tosha.scaleY = 3;
 			this.tosha.body.setSize(16, 16, false);
-			this.physics.add.collider(this.jason, this.tosha, this.bubble1, null, this);
+			this.physics.add.collider(this.jason, this.tosha, () => {
+				const bubble = this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 250, 150, "Hi Jason! How are you doing today?");
+				this.time.delayedCall(3000, () => {
+					bubble.destroy();
+				});
+			});
 
 			//money
 			this.moneyScore = 0;
@@ -213,7 +218,7 @@ export default class Level extends Phaser.Scene {
 				repeat: -1
 			});
 
-			var musicFiles = [    'Song1',    'Song2',    'Song3'];
+			var musicFiles = ['Song1', 'Song2','Song3'];
 
 			var currentMusicIndex = 0;
 
@@ -238,13 +243,9 @@ export default class Level extends Phaser.Scene {
 			playNextSong(this);
 
 
-			var bubble1 = this.createSpeechBubble(128, 128, 220, 80, "Global Handler!");
-			var bubble2 = this.createSpeechBubble(290, 180, 220, 80, "Global Key Code!");
-			var bubble3 = this.createSpeechBubble(560, 180, 220, 80, "Local Handler!");
-
-			bubble1.setVisible(false);
-			bubble2.setVisible(false);
-			bubble3.setVisible(false);
+			//var bubble1 = this.createSpeechBubble(128, 128, 220, 80, "Global Handler!");
+			//var bubble2 = this.createSpeechBubble(290, 180, 220, 80, "Global Key Code!");
+			//var bubble3 = this.createSpeechBubble(560, 180, 220, 80, "Local Handler!");
 
 	}
 
