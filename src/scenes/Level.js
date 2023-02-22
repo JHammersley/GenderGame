@@ -35,7 +35,7 @@ export default class Level extends Phaser.Scene {
 
 	checkWinCondition() {
 		const totalCollected = this.moneyScore + this.foodScore;
-		if (totalCollected === this.totalItems) {
+		if (totalCollected === 15) {
 		  console.log("You win!");
 		}
 	}
@@ -148,12 +148,37 @@ export default class Level extends Phaser.Scene {
 			this.tosha.scaleX = 3;
 			this.tosha.scaleY = 3;
 			this.tosha.body.setSize(16, 16, false);
+			// add a boolean variable to track if the bubble has already been shown
+			let bubbleShown = false;
+
+			// add a collider with a callback function
 			this.physics.add.collider(this.jason, this.tosha, () => {
-				const bubble = this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 250, 150, "Hi Jason! How are you doing today?");
-				this.time.delayedCall(3000, () => {
-					bubble.destroy();
+			if (!bubbleShown) { // check if the bubble has not been shown yet
+				bubbleShown = true; // set the variable to true to indicate that the bubble has been shown
+				const Bubble = this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 250, 150, "Get these items for me");
+				this.tweens.add({
+				targets: Bubble,
+				y: "-=50",
+				alpha: 0,
+				duration: 3000,
+				ease: "Power2",
+				onComplete: () => {
+					Bubble.destroy();
+					// check win condition
+					const totalCollected = this.moneyScore + this.foodScore;
+					if (totalCollected === 15) {
+					this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 150, 100, "Yay, I love you baby!");
+						this.time.delayedCall(3000)
+					} else {
+					this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 150, 100, "Jason, quit being lazy. We need this stuff.");
+						this.time.delayedCall(3000)
+
+					}
+				}
 				});
+			}
 			});
+
 
 			//money
 			this.moneyScore = 0;
@@ -168,11 +193,6 @@ export default class Level extends Phaser.Scene {
 			this.food.scaleX = 3;
 			this.food.scaleY = 3;
 			this.physics.add.collider(this.jason, this.food, this.collectFood, null, this);
-			// Check for collisions between jason and tosha
-			this.physics.add.collider(this.jason, this.tosha, () => {
-				// When they collide, create a speech bubble with the quote "Hi, Tosha!"
-				this.createSpeechBubble(this.tosha.x, this.tosha.y - 50, 200, 100, "Hi, Tosha!"),null,this
-			});
 
 			//collisons
 			this.physics.add.overlap(this.jason, this.Money);
@@ -228,7 +248,8 @@ export default class Level extends Phaser.Scene {
 				}
 
 				var music = game.sound.add(musicFiles[currentMusicIndex], {
-					volume: 0.1
+					volume: 0.1,
+					loop: true
 				});
 
 				music.once('ended', function() {
@@ -241,11 +262,6 @@ export default class Level extends Phaser.Scene {
 			}
 
 			playNextSong(this);
-
-
-			//var bubble1 = this.createSpeechBubble(128, 128, 220, 80, "Global Handler!");
-			//var bubble2 = this.createSpeechBubble(290, 180, 220, 80, "Global Key Code!");
-			//var bubble3 = this.createSpeechBubble(560, 180, 220, 80, "Local Handler!");
 
 	}
 
