@@ -151,33 +151,43 @@ export default class Level extends Phaser.Scene {
 			// add a boolean variable to track if the bubble has already been shown
 			let bubbleShown = false;
 
-			// add a collider with a callback function
 			this.physics.add.collider(this.jason, this.tosha, () => {
-			if (!bubbleShown) { // check if the bubble has not been shown yet
-				bubbleShown = true; // set the variable to true to indicate that the bubble has been shown
-				const Bubble = this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 250, 150, "Get these items for me");
-				this.tweens.add({
-				targets: Bubble,
-				y: "-=50",
-				alpha: 0,
-				duration: 3000,
-				ease: "Power2",
-				onComplete: () => {
-					Bubble.destroy();
-					// check win condition
-					const totalCollected = this.moneyScore + this.foodScore;
-					if (totalCollected === 15) {
-					this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 150, 100, "Yay, I love you baby!");
-						this.time.delayedCall(3000)
-					} else {
-					this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 150, 100, "Jason, quit being lazy. We need this stuff.");
-						this.time.delayedCall(3000)
-
+				if (!bubbleShown) { // check if the bubble has not been shown yet
+				  bubbleShown = true; // set the variable to true to indicate that the bubble has been shown
+				  const Bubble = this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 250, 150, "Get these items for me");
+				  this.tweens.add({
+					targets: Bubble,
+					y: "-=50",
+					alpha: 0,
+					duration: 5000,
+					ease: "Power2",
+					onComplete: () => {
+					  Bubble.destroy();
+					  // check win condition
+					  const totalCollected = this.moneyScore + this.foodScore;
+					  if (totalCollected === 15) {
+						this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 150, 100, "Yay, I love you baby!");
+						this.time.delayedCall(3000, () => {
+							if (this.totalCollected) {
+							  this.totalCollected.destroy();
+							  }
+							});
+					  } else {
+						this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 150, 100, "Jason, quit being lazy. We need this stuff.");
+						this.time.delayedCall(3000, () => {
+						  if (this.totalCollected) {
+							this.totalCollected.destroy();
+						  }
+						});
+					  }
 					}
+				  });
 				}
-				});
-			}
-			});
+			  });
+			  
+			  
+			  
+  
 
 
 			//money
