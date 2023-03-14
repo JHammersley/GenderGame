@@ -16,6 +16,9 @@ export default class Preload extends Phaser.Scene {
 
 	}
 
+	preload() {
+		this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+	  }
 
 	preload() {
 
@@ -72,7 +75,7 @@ export default class Preload extends Phaser.Scene {
 
 	complete() {
 		console.log("COMPLETE!");
-		this.scene.start("Level");
+		this.scene.start("TitleScene");
 	}
 
 }

@@ -72,6 +72,19 @@
                 "key": "tosha"
             },
             {
+                "url": "assets/Doc.png",
+                "frameConfig": {
+                    "frameWidth": 16,
+                    "frameHeight": 16,
+                    "startFrame": 0,
+                    "endFrame": 8,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "Doc"
+            },
+            {
                 "url": "assets/Tosha/Toshaface.png",
                 "frameConfig": {},
                 "type": "image",

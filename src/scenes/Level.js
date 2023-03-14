@@ -33,13 +33,6 @@ export default class Level extends Phaser.Scene {
 		console.log(`Food Score: ${this.foodScore}`);
 	}
 
-	checkWinCondition() {
-		const totalCollected = this.moneyScore + this.foodScore;
-		if (totalCollected === 15) {
-		  console.log("You win!");
-		}
-	}
-
 	createSpeechBubble (x, y, width, height, quote)
 {
     var bubbleWidth = width;
@@ -166,17 +159,18 @@ export default class Level extends Phaser.Scene {
 					  // check win condition
 					  const totalCollected = this.moneyScore + this.foodScore;
 					  if (totalCollected === 15) {
-						this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 150, 100, "Yay, I love you baby!");
+						const bubble2 = this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 150, 100, "Yay, I love you baby!");
 						this.time.delayedCall(3000, () => {
-							if (this.totalCollected) {
-							  this.totalCollected.destroy();
-							  }
-							});
+						  if (bubble2) {
+							bubble2.destroy();
+						  }
+						  this.scene.start("WinScene");
+						});
 					  } else {
-						this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 150, 100, "Jason, quit being lazy. We need this stuff.");
+						const bubble3 = this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 150, 100, "Jason, quit being lazy. We need this stuff.");
 						this.time.delayedCall(3000, () => {
-						  if (this.totalCollected) {
-							this.totalCollected.destroy();
+						  if (bubble3) {
+							bubble3.destroy();
 						  }
 						});
 					  }
@@ -187,8 +181,6 @@ export default class Level extends Phaser.Scene {
 			  
 			  
 			  
-  
-
 
 			//money
 			this.moneyScore = 0;
@@ -274,7 +266,6 @@ export default class Level extends Phaser.Scene {
 			playNextSong(this);
 
 	}
-
 	
     update() {
 		if (this.cursors.up.isDown) {
@@ -299,8 +290,6 @@ export default class Level extends Phaser.Scene {
 		this.physics.add.collider(this.jason, this.food, this.collectFood, null, this);
 		this.moneyText.setText(`Money: ${this.moneyScore}`);
   		this.foodText.setText(`Food: ${this.foodScore}`);
-		this.checkWinCondition();
-
 	}
 	
 }
