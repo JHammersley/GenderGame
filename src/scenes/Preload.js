@@ -18,7 +18,17 @@ export default class Preload extends Phaser.Scene {
 
 	preload() {
 		this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
-	  }
+		this.load.on('complete', this.fontsLoaded, this);
+	}
+
+	  fontsLoaded() {
+		WebFont.load({
+			custom: {
+				families: ['Retro'],
+				urls: ['assets/RetroGaming.tff']
+			}
+		});
+	}
 
 	preload() {
 

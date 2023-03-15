@@ -74,7 +74,7 @@ export default class Level extends Phaser.Scene {
     bubble.lineBetween(point2X, point2Y, point3X, point3Y);
     bubble.lineBetween(point1X, point1Y, point3X, point3Y);
 
-    var content = this.add.text(0, 0, quote, { fontFamily: 'Arial', fontSize: 20, color: '#000000', align: 'center', wordWrap: { width: bubbleWidth - (bubblePadding * 2) } });
+    var content = this.add.text(0, 0, quote, { fontFamily: 'Retro', fontSize: 15, color: '#000000', align: 'center', wordWrap: { width: bubbleWidth - (bubblePadding * 2) } });
 
     var b = content.getBounds();
 
@@ -141,43 +141,53 @@ export default class Level extends Phaser.Scene {
 			this.tosha.scaleX = 3;
 			this.tosha.scaleY = 3;
 			this.tosha.body.setSize(16, 16, false);
-			// add a boolean variable to track if the bubble has already been shown
-			let bubbleShown = false;
 
-			this.physics.add.collider(this.jason, this.tosha, () => {
-				if (!bubbleShown) { // check if the bubble has not been shown yet
-				  bubbleShown = true; // set the variable to true to indicate that the bubble has been shown
-				  const Bubble = this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 250, 150, "Get these items for me");
-				  this.tweens.add({
+
+			// Show speech bubble
+			const Bubble = this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 250, 150, "Jason, I'm so hungry! Can you get me and the baby some food! Also, The Doc said we need $60,000 to get the baby gender! You know how bad I need to know too!", {fontSize: '10px'});
+			Bubble.setDepth(100); // Make sure the bubble is in front of the characters
+			this.input.keyboard.once('keydown-ENTER', () => {
+				this.tweens.add({
 					targets: Bubble,
 					y: "-=50",
 					alpha: 0,
 					duration: 5000,
 					ease: "Power2",
 					onComplete: () => {
-					  Bubble.destroy();
-					  // check win condition
-					  const totalCollected = this.moneyScore + this.foodScore;
-					  if (totalCollected === 15) {
-						const bubble2 = this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 150, 100, "Yay, I love you baby!");
-						this.time.delayedCall(3000, () => {
-						  if (bubble2) {
-							bubble2.destroy();
-						  }
-						  this.scene.start("WinScene");
-						});
-					  } else {
-						const bubble3 = this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 150, 100, "Jason, quit being lazy. We need this stuff.");
-						this.time.delayedCall(3000, () => {
-						  if (bubble3) {
-							bubble3.destroy();
-						  }
-						});
-					  }
+						Bubble.destroy();
+						// Start the game
+						// ...
 					}
-				  });
+				});
+			});
+
+						
+			// add a boolean variable to track if the bubble has already been shown
+			this.physics.add.collider(this.jason, this.tosha, () => {
+				const totalCollected = this.moneyScore + this.foodScore;
+				if (totalCollected === 15) {
+					const bubble2 = this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 150, 100, "Yay, I love you baby!");
+					this.tweens.add({
+						targets: bubble2,
+						y: "-=50",
+						alpha: 0,
+						duration: 5000,
+						ease: "Power2"
+					});
+					this.time.delayedCall(3000, () => {
+						this.scene.start("WinScene");
+					});
+				} else {
+					const bubble3 = this.createSpeechBubble(this.tosha.x - 50, this.tosha.y - 200, 150, 100, "Jason, quit being lazy. We need this stuff.");
+					this.tweens.add({
+						targets: bubble3,
+						y: "-=50",
+						alpha: 0,
+						duration: 5000,
+						ease: "Power2"
+					});
 				}
-			  });
+			});			
 			  
 			  
 			  
