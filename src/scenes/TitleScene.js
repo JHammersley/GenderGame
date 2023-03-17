@@ -12,7 +12,7 @@ export default class TitleScene extends Phaser.Scene {
     this.cameras.main.setBackgroundColor("#ffffff");
 
     // Add the instructions text
-    const instructions = this.add.text(this.game.config.width / 2, 100, "Instructions:\n\nUse arrow keys to move around!\nTalk to Tosha first then collect all the items\nand return to Tosha once you think you've collected them all!", { 
+    const instructions = this.add.text(this.game.config.width / 2, 100, "Instructions:\n\nUse arrow keys to move around!\nTalk to Tosha first then collect all the items\nand return to Tosha once you think you've collected them all!\nPress enter after you have read the speech boxes.", { 
       fontFamily: "Retro",
       fontSize: "24px",
       color: "#000000",

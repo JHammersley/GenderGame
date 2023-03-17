@@ -38,6 +38,7 @@ export default class Preload extends Phaser.Scene {
 		this.load.atlas('toshasprite', '../assets/toshasprite.png','../assets/toshasprite.json');
 		this.load.image('doc', 'assets/ExtraSprites/old_man.png')
 		this.load.image('Toshaface', 'assets/Tosha/Toshaface.png');
+		this.load.image('jasonface','assets/jasonface.png')
 		this.load.atlas('food', 'assets/Game_Items/items.png','assets/Game_Items/items.json');
 		this.load.image('Money', 'assets/Game_Items/items0000.png');
 		this.load.image('base_tiles', 'assets/Village.png');
@@ -86,7 +87,7 @@ export default class Preload extends Phaser.Scene {
 
 	complete() {
 		console.log("COMPLETE!");
-		this.scene.start("WinScene");
+		this.scene.start("Level");
 	}
 
 }

@@ -10,8 +10,6 @@ export default class WinScene extends Phaser.Scene {
 	mainmap_1;
 	/** @type {Phaser.Physics.Arcade.Sprite} */
     tosha;
-	/** @type {Phaser.Sound.WebAudioSoundManager#play} */
-	backgroundMusic;
 
   
     constructor() {
@@ -30,7 +28,6 @@ export default class WinScene extends Phaser.Scene {
           mainmap.createLayer("Background", ["Serene_Village_48x48"], 0, 0);
           // mainLevel_1
           const mainLevel_1 = mainmap.createLayer("MainLevel", ["Serene_Village_48x48"], 0, 0);
-          this.events.emit("scene-awake");
 
           // jason
           this.jason = this.physics.add.sprite(170, 266, "jasonsprite", "jason0003");
@@ -57,8 +54,6 @@ export default class WinScene extends Phaser.Scene {
           this.tosha.scaleX = 3;
           this.tosha.scaleY = 3;
           this.tosha.body.setSize(16, 16, false);
-          this.tosha = this.physics.add.sprite(120, 204, "toshasprite", "Tosha0000").setImmovable();
-
 
       
           // create doc animation
@@ -91,99 +86,90 @@ export default class WinScene extends Phaser.Scene {
             doc.anims.play('up', true);
           }, this);
       
-          // set up doc animation and speech bubbles to play after delay
-          this.physics.add.collider(doc, this.tosha, () => {
-              const speechBubble = this.createSpeechBubble(doc.x - 50, doc.y - 100, 250, 150, "Thanks for the payment, your results are in and it's a...");
-              this.input.keyboard.once('keydown-ENTER', () => {
-                speechBubble.destroy();
-                const glassesBubble = this.createSpeechBubble(doc.x - 50, doc.y - 100, 250, 150, "Hold on, let me grab my glasses.");
-                this.input.keyboard.once('keydown-ENTER', () => {
-                  glassesBubble.destroy();
-                  const finalBubble = this.createSpeechBubble(doc.x - 50, doc.y - 100, 250, 150, "Congrats, it's a boy!");
+         // set up doc animation and speech bubbles to play after delay
+         this.physics.add.collider(doc, this.tosha, () => {
+          const speechBubble = this.createSpeechBox("doc", "Thanks for the payment, your results are in and it's a...");
+            this.input.keyboard.once('keydown-ENTER', () => {
+              speechBubble.destroy();
+                const glassesBubble = this.createSpeechBox("doc", "Hold on, let me grab my glasses.");
                   this.input.keyboard.once('keydown-ENTER', () => {
-                    const bubble1 = this.createSpeechBubble(this.tosha.x + 30, this.tosha.y - 100, 250, 150, "Yay! I'm so happy Jason! What should we name him?");
-                      bubble1.destroy();
-                    this.input.keyboard.once('keydown-ENTER', () => {
-                      const bubble2 = this.createSpeechBubble(this.jason.x - 80, this.jason.y - 100, 250, 150, "I'm so excited! His name will be Anakin Oliver Hammersley!");
-                        bubble2.destroy();
-                  });
-                });
+                    glassesBubble.destroy();
+                      const finalBubble = this.createSpeechBox("doc", "Congrats, it's a boy!");
+                        this.input.keyboard.once('keydown-ENTER', () => {
+                          finalBubble.destroy();
+                            const bubble1 = this.createSpeechBox('Toshaface', "Yay! I'm so happy Jason! What should we name him?");
+                                this.input.keyboard.once('keydown-ENTER', () => {
+                                  bubble1.destroy();
+                                  const bubble2 = this.createSpeechBox("jasonface", "I'm so excited! His name will be Anakin Oliver Hammersley!");
               });
             });
           });
-      }
-      
-      createSpeechBubble (x, y, width, height, quote)
-      {
+        });
+      });
+  }
+
+        createSpeechBox(characterImage, quote,  boxWidth = 400, boxHeight = 150, boxPadding = 10) {
           const mainmap = this.add.tilemap("mainmap");
           mainmap.addTilesetImage("Serene_Village_48x48", "Village");
-          // background_1
           mainmap.createLayer("Background", ["Serene_Village_48x48"], 0, 0);
-          // mainLevel_1
           const mainLevel_1 = mainmap.createLayer("MainLevel", ["Serene_Village_48x48"], 0, 0);
           this.events.emit("scene-awake");
 
-          var bubbleWidth = width;
-          var bubbleHeight = height;
-          var bubblePadding = 10;
-      
-          var centerX1 = mainmap.getTileAt(0, 7).getCenterX();
-          var centerX2 = mainmap.getTileAt(9, 7).getCenterX();
-          var centerY1 = mainmap.getTileAt(0, 9).getCenterY();
-          var centerY2 = mainmap.getTileAt(9, 9).getCenterY();
-          
-          var bubble = this.add.graphics({ centerX1 : centerX2, centerY1 : centerY2 });
-          
-              // Create character image sprite
-          var charImage = this.add.sprite(-60, -80, "doc");
-          charImage.setScale(0.8);
+          const box = this.add.container(100, 300);
 
-      
-          //  Bubble shadow
-          bubble.fillStyle(0x222222, 0.5);
-          bubble.fillRoundedRect(6, 6, bubbleWidth, bubbleHeight, 16);
-      
-          //  Bubble color
-          bubble.fillStyle(0xffffff, 1);
-      
-          //  Bubble outline line style
-          bubble.lineStyle(4, 0x565656, 1);
-      
-          //  Bubble shape and outline
-          bubble.strokeRoundedRect(0, 0, bubbleWidth, bubbleHeight, 16);
-          bubble.fillRoundedRect(0, 0, bubbleWidth, bubbleHeight, 16);
-      
-  
-          //  Bubble arrow shadow
-          bubble.lineStyle(4, 0x222222, 0.5);
-      
-          //  Bubble arrow fill
-          bubble.lineStyle(2, 0x565656, 1);
-      
-          // Create text object
-          var content = this.add.text(0, 0, '', { fontFamily: 'Arial', fontSize: 20, color: '#000000', align: 'center', wordWrap: { width: bubbleWidth - (bubblePadding * 2) } });
-      
-          var b = content.getBounds();
-      
-          // Set position of text object
-          content.setPosition(bubble.x + (bubbleWidth / 2) - (b.width / 2), bubble.y + (bubbleHeight / 2) - (b.height / 2));
-      
-          // Add typewriter effect
-          var i = 0;
-          this.time.addEvent({
-              delay: 50,
-              callback: function() {
-                  content.setText(quote.substr(0, i));
-                  i++;
-      
-                  if (i > quote.length) {
-                      this.time.removeAllEvents();
-                  }
-              },
-              callbackScope: this,
-              loop: true
+          const boxBg = this.add.graphics();
+          boxBg.fillStyle("#FFFFFF", 0.5);
+          boxBg.fillRect(0, 0, boxWidth, boxHeight);
+          box.add(boxBg);
+
+          if (characterImage) { // if characterImage is provided, add it to the container
+            const charImg = this.add.sprite(50, 75, characterImage);
+            charImg.setScale(3);
+            box.add(charImg);
+          }
+
+          const boxContent = this.add.text(125, 20, '', {
+            fontFamily: 'Retro',
+            fontSize: 20,
+            color: '#000000',
+            align: 'center',
+            wordWrap: { width: boxWidth - (boxPadding * 12) }
           });
-      
-          return bubble;
+          box.add(boxContent);
+
+          const boxArrow = this.add.graphics();
+          boxArrow.lineStyle(2, 0x565656, 1);
+          boxArrow.fillStyle(0xffffff, 1);
+          boxArrow.beginPath();
+          boxArrow.lineTo(0, 0);
+          boxArrow.lineTo(20, 0);
+          boxArrow.lineTo(10, 10);
+          boxArrow.closePath();
+          boxArrow.fillPath();
+          boxArrow.x = 30;
+          boxArrow.y = boxHeight - 10;
+          box.add(boxArrow);
+
+          // Add typewriter effect
+          let i = 0;
+          let quoteLength = quote.length;
+          let delay = 50;
+
+          const typeWriter = () => {
+            if (i <= quoteLength) {
+              boxContent.setText(quote.substr(0, i));
+              i++;
+              this.time.addEvent({
+                delay: delay,
+                callback: typeWriter,
+                callbackScope: this
+              });
+            } else {
+              this.time.removeAllEvents();
+            }
+          };
+
+          typeWriter();
+          return box;
+        }
       }
-    }      
